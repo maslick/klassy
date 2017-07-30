@@ -6,7 +6,7 @@ Weka classification wrapper
 
 
 ## Description
- * Klassy provides a Weka friendly API with only two methods to override.
+ * Klassy provides a Weka friendly API with only two methods to implement.
  * Build against Weka 3.8.1 (but can be used with earlier versions)
 
 ## Installation
