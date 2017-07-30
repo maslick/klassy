@@ -14,6 +14,6 @@ cache:
 deploy:
   provider: bintray
   skip_cleanup: true
-  file: target/klassy-1.0.SNAPSHOT.jar
+  file: "bintray.json"
   user: maslick
   key: $BINTRAY_API_KEY
