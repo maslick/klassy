@@ -37,6 +37,43 @@ public void housing() {
 }
 ```
 
+```
+public class Houser extends AbstractClassifier<House> {
+
+    public Houser(IFileLoader fileLoader) {
+        super(fileLoader);
+        classIndex = 5;
+        MODEL = "house.model";
+        classifierType = REGRESSION;
+        relation = "house";
+        super.loadClassifierModel();
+    }
+
+    @Override
+    public ArrayList<Attribute> createAttributeList() {
+        ArrayList<Attribute> atts = new ArrayList<>();
+        atts.add(new Attribute("houseSize",    0));
+        atts.add(new Attribute("lotSize",      1));
+        atts.add(new Attribute("bedrooms",     2));
+        atts.add(new Attribute("granite",      3));
+        atts.add(new Attribute("bathroom",     4));
+        atts.add(new Attribute("sellingPrice", 5));
+        return atts;
+    }
+
+    @Override
+    public Instance calculateFeatures(House data) {
+        Instance instance = new DenseInstance(6);
+        instance.setValue(attributes.get(0), data.getHouseSize());
+        instance.setValue(attributes.get(1), data.getLotSize());
+        instance.setValue(attributes.get(2), data.getBedrooms());
+        instance.setValue(attributes.get(3), data.getGranite());
+        instance.setValue(attributes.get(4), data.getBathroom());
+        return instance;
+    }
+}
+```
+
 --------
 ## IFileLoader
 IFileLoader interface allows you to abstract away from your running environment (it may be the pc, as well as the mobile) and load weka models.
