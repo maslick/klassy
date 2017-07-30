@@ -30,9 +30,9 @@ dependencies {
 ```
 @Test
 public void housing() {
-    Houser classifier = new Houser(new ContextLoader());
+    Houser model = new Houser(new ContextLoader());
     House house = new House(3198, 9669, 5, 2, 1);
-    String klass = classifier.classify(house);
+    String klass = model.classify(house);
     Assert.assertEquals(219328, Double.valueOf(klass), 1);
 }
 ```
@@ -46,7 +46,6 @@ public class Houser extends AbstractClassifier<House> {
         MODEL = "house.model";
         classifierType = REGRESSION;
         relation = "house";
-        super.loadClassifierModel();
     }
 
     @Override

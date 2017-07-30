@@ -42,15 +42,17 @@ public abstract class AbstractClassifier<T> implements IClassifier<T> {
         return instances;
     }
 
-    public String classify(T data) {
-        // 0. create attribute list
-        // 1. create instances placeholder
+    public final String classify(T data) {
+        // 1. load model
+        if (classifier == null) loadClassifierModel();
+        // 2. create attribute list
+        // 3. create a placeholder with instances
         Instances instancesPlaceholder = createInstancesPlaceholder();
-        // 2. calculate features
+        // 4. calculate features
         Instance features = calculateFeatures(data);
-        // 3. add features to placeholder
+        // 5. add features to the placeholder
         instancesPlaceholder.add(features);
-        // 4. classify
+        // 6. classify
         String clazz = null;
         try {
             Instance instance = instancesPlaceholder.instance(0);
@@ -60,7 +62,7 @@ public abstract class AbstractClassifier<T> implements IClassifier<T> {
             else if (classifierType == ClassifierType.REGRESSION)
                 clazz = predictedClass.toString();
         } catch (Exception e) {
-            System.out.println("Problem found when classifying the text");
+            System.out.println("Problem found while classifying");
             e.printStackTrace();
         }
         return clazz;

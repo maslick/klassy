@@ -18,7 +18,6 @@ public class Houser extends AbstractClassifier<House> {
         MODEL = "house.model";
         classifierType = REGRESSION;
         relation = "house";
-        super.loadClassifierModel();
     }
 
     @Override
