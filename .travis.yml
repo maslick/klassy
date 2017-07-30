@@ -10,6 +10,7 @@ script:
 cache:
   directories:
     - $HOME/.m2
+    - $HOME/.gradle/caches/
 
 deploy:
   provider: bintray
