@@ -1,4 +1,4 @@
-package com.maslick.ai.classy;
+package com.maslick.ai.klassy;
 
 import com.maslick.ai.klassy.classifier.AbstractClassifier;
 import com.maslick.ai.klassy.io.IFileLoader;

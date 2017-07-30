@@ -1,4 +1,4 @@
-package com.maslick.ai.classy;
+package com.maslick.ai.klassy;
 
 public class House {
 
