@@ -5,10 +5,24 @@ Weka classification wrapper
 [ ![Download](https://api.bintray.com/packages/maslick/maven/klassy/images/download.svg?version=0.1) ](https://bintray.com/maslick/maven/klassy/0.1/link)
 
 
-## description
-Klassy provides a Weka friendly API with only two methods to override.
+## Description
+ * Klassy provides a Weka friendly API with only two methods to override.
+ * Build against Weka 3.8.1 (but can be used with earlier versions)
 
-## usage
+## Installation
+```
+repositories {
+    maven {
+        url  "https://dl.bintray.com/maslick/maven/"
+    }
+}
+...
+dependencies {    
+    compile('com.maslick.ai:klassy:0.1.3')
+}
+```
+
+## Usage
 * extend the AbstractClassifier class and implement two methods - ``createAttributeList`` and ``calculateFeatures``
 * depending on your deployment target (pc, android, etc.) implement the ``IFileLoader`` interface (see below)
 * instantiate your model (classifier) and invoke its classify method:
