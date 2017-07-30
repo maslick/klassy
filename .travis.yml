@@ -12,9 +12,8 @@ cache:
     - $HOME/.m2
 
 deploy:
-  -
-    provider: bintray
-    skip_cleanup: true
-    file: build/libs/klassy-1.0.SNAPSHOT.jar
-    user: maslick
-    key: $BINTRAY_API_KEY
+  provider: bintray
+  skip_cleanup: true
+  file: target/klassy-1.0.SNAPSHOT.jar
+  user: maslick
+  key: $BINTRAY_API_KEY
