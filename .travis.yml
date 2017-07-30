@@ -13,6 +13,7 @@ cache:
     - $HOME/.gradle/caches/
 
 deploy:
+  on: production
   provider: bintray
   skip_cleanup: true
   file: "bintray.json"
