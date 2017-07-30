@@ -27,7 +27,7 @@
 
   "files":
   [
-    {"includePattern": "build/libs/(.*)", "excludePattern": "target/.*.zip$", "uploadPattern": "/$1"}
+    {"includePattern": "build/repo/(.*)", "excludePattern": "target/.*.zip$", "uploadPattern": "/$1"}
   ],
   "publish": true
 }

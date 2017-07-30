@@ -5,7 +5,7 @@ jdk:
 
 install: true
 script:
-  - gradle clean build
+  - gradle clean publish
 
 cache:
   directories:
