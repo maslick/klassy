@@ -6,7 +6,8 @@ Weka classification wrapper
 
 
 ## Description
- * Klassy provides a Weka friendly API with only two methods to implement.
+ * Klassy provides a Weka friendly API with only two methods to implement
+ * Intended for **using** existing Weka models in production code
  * Build against Weka 3.8.1 (but can be used with earlier versions)
 
 ## Installation
@@ -18,11 +19,11 @@ repositories {
 }
 ...
 dependencies {    
-    compile('com.maslick.ai:klassy:0.1.3')
+    compile('com.maslick.ai:klassy:0.1.4')
 }
 ```
 
-## Usage
+## Usage ([see Unit test](https://github.com/maslick/klassy/tree/master/src/test/java/com/maslick/ai/klassy))
 * extend the AbstractClassifier class and implement two methods - ``createAttributeList`` and ``calculateFeatures``
 * depending on your deployment target (pc, android, etc.) implement the ``IFileLoader`` interface (see below)
 * instantiate your model (classifier) and invoke its classify method:
@@ -75,7 +76,7 @@ public class Houser extends AbstractClassifier<House> {
 
 --------
 ## IFileLoader
-IFileLoader interface allows you to abstract away from your running environment (it may be the pc, as well as the mobile) and load weka models.
+IFileLoader interface allows you to abstract away from your deployment target and load weka models (it may well be a PC, as well as the mobile phone).
 
 SpringBoot implementation:
 ```
