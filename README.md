@@ -23,7 +23,7 @@ dependencies {
 }
 ```
 
-## Usage ([see Unit test](https://github.com/maslick/klassy/tree/master/src/test/java/com/maslick/ai/klassy))
+## Usage ([see example](https://github.com/maslick/klassy/tree/master/src/test/java/com/maslick/ai/klassy))
 * extend the AbstractClassifier class and implement two methods - ``createAttributeList`` and ``calculateFeatures``
 * depending on your deployment target (pc, android, etc.) implement the ``IFileLoader`` interface (see below)
 * instantiate your model (classifier) and invoke its classify method:
