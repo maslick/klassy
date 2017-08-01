@@ -26,47 +26,60 @@ dependencies {
 * depending on your deployment target (pc, android, etc.) implement the ``IFileLoader`` interface (see below)
 * instantiate your model (classifier) and invoke its classify method:
 
-```
+```java
 @Test
 public void housing() {
     Houser model = new Houser(new ContextLoader());
-    House house = new House(3198, 9669, 5, 2, 1);
+    House house = House.builder()
+                    .houseSize(3198)
+                    .lotSize(9669)
+                    .bedrooms(5)
+                    .granite(2)
+                    .bathroom(1)
+                    .build();
     String klass = model.classify(house);
     Assert.assertEquals(219328, Double.valueOf(klass), 1);
 }
 ```
 
-```
+```java
 public class Houser extends AbstractClassifier<House> {
 
     public Houser(IFileLoader fileLoader) {
         super(fileLoader);
-        classIndex = 5;
-        MODEL = "house.model";
-        classifierType = REGRESSION;
-        relation = "house";
+        classIndex = 5;                // usually comes last (5) or first (0)
+        MODEL = "house.model";         // model file name without path
+        classifierType = REGRESSION;   // CLASSIFICATION or REGRESSION
+        relation = "house";            // not necessary (name of the dataset)
     }
 
     @Override
     public ArrayList<Attribute> createAttributeList() {
         ArrayList<Attribute> atts = new ArrayList<>();
-        atts.add(new Attribute("houseSize",    0));
-        atts.add(new Attribute("lotSize",      1));
-        atts.add(new Attribute("bedrooms",     2));
-        atts.add(new Attribute("granite",      3));
-        atts.add(new Attribute("bathroom",     4));
-        atts.add(new Attribute("sellingPrice", 5));
+
+        // Weka doesn't take attribute names into account, but their order!
+        // However, for clarity one should specify attribute names like below
+
+        atts.add(new Attribute("houseSize"));
+        atts.add(new Attribute("lotSize"));
+        atts.add(new Attribute("bedrooms"));
+        atts.add(new Attribute("granite"));
+        atts.add(new Attribute("bathroom"));
+        atts.add(new Attribute("sellingPrice"));
+
         return atts;
     }
 
     @Override
     public Instance calculateFeatures(House data) {
-        Instance instance = new DenseInstance(6);
-        instance.setValue(attributes.get(0), data.getHouseSize());
-        instance.setValue(attributes.get(1), data.getLotSize());
-        instance.setValue(attributes.get(2), data.getBedrooms());
-        instance.setValue(attributes.get(3), data.getGranite());
-        instance.setValue(attributes.get(4), data.getBathroom());
+        // valid instance size is 5 or 6 (with class attribute)
+        Instance instance = new DenseInstance(5);
+
+        instance.setValue(0, data.getHouseSize());
+        instance.setValue(1, data.getLotSize());
+        instance.setValue(2, data.getBedrooms());
+        instance.setValue(3, data.getGranite());
+        instance.setValue(4, data.getBathroom());
         return instance;
     }
 }
@@ -77,7 +90,7 @@ public class Houser extends AbstractClassifier<House> {
 IFileLoader interface allows you to abstract away from your deployment target and load weka models (it may well be a PC, as well as the mobile phone).
 
 SpringBoot implementation:
-```
+```java
 public class SpringFileLoader implements IFileLoader {
     @Override
     public InputStream getFile(String filename) throws IOException {
@@ -87,7 +100,7 @@ public class SpringFileLoader implements IFileLoader {
 ```
 
 Android implementation:
-```
+```java
 public class AndroidFileLoader implements IFileLoader {
     private Context context;
     
@@ -103,7 +116,7 @@ public class AndroidFileLoader implements IFileLoader {
 ```
 
 Classy provides the default ContextLoader implementation:
-```
+```java
 public class ContextLoader implements IFileLoader{
     @Override
     public InputStream getFile(String filename) throws IOException {
