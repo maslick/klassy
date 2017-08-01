@@ -47,10 +47,10 @@ public class Houser extends AbstractClassifier<House> {
 
     public Houser(IFileLoader fileLoader) {
         super(fileLoader);
-        classIndex = 5;                // usually comes last (5) or first (0)
         MODEL = "house.model";         // model file name without path
         classifierType = REGRESSION;   // CLASSIFICATION or REGRESSION
-        relation = "house";            // not necessary (name of the dataset)
+        classIndex = 5;                // usually comes last (5) or first (0)
+        relation = "house";            // name of the dataset (optional)
     }
 
     @Override

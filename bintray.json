@@ -1,8 +1,8 @@
 {
   "package": {
-    "name": "klassy",                                                         // Bintray package name
-    "repo": "maven",                                                          // Bintray repository name
-    "subject": "maslick",                                                     // Bintray subject (user or organization)
+    "name": "klassy",
+    "repo": "maven",
+    "subject": "maslick",
     "desc": "I was pushed completely automatically",
     "website_url": "https://github.com/maslick",
     "issue_tracker_url": "https://github.com/maslick/klassy/issues",
