@@ -65,7 +65,7 @@ public class Houser extends AbstractClassifier<House> {
         atts.add(new Attribute("bedrooms"));
         atts.add(new Attribute("granite"));
         atts.add(new Attribute("bathroom"));
-        atts.add(new Attribute("sellingPrice"));
+        atts.add(new Attribute("sellingPrice"));    // class attribute (classIndex=5)
 
         return atts;
     }
