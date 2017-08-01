@@ -9,7 +9,14 @@ public class Testing {
     @Test
     public void housing() {
         Houser model = new Houser(new ContextLoader());
-        House house = new House(3198, 9669, 5, 2, 1);
+        House house = House.builder()
+                .houseSize(3198)
+                .lotSize(9669)
+                .bedrooms(5)
+                .granite(2)
+                .bathroom(1)
+                .build();
+
         String klass = model.classify(house);
         Assert.assertEquals(219328, Double.valueOf(klass), 1);
     }

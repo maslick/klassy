@@ -27,6 +27,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.1'
     testCompile group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.1'
+    testCompileOnly 'org.projectlombok:lombok:1.16.16'
 }
 
 compileKotlin {
