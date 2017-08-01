@@ -13,13 +13,11 @@ Weka classification wrapper
 ## Installation
 ```
 repositories {
-    maven {
-        url  "https://dl.bintray.com/maslick/maven/"
-    }
+    jcenter()
 }
 ...
 dependencies {    
-    compile('com.maslick.ai:klassy:0.1.4')
+    compile('com.maslick.ai:klassy:0.1.6')
 }
 ```
 
