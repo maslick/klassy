@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.maslick.ai.klassy.classifier.ClassifierType.CLASSIFICATION;
+import static com.maslick.ai.klassy.classifier.Verbosity.DEBUG;
+import static com.maslick.ai.klassy.classifier.Verbosity.RUNTIME;
 
 public abstract class AbstractClassifier<T> implements IClassifier<T> {
     private IFileLoader fileLoader;
@@ -21,6 +23,9 @@ public abstract class AbstractClassifier<T> implements IClassifier<T> {
     protected String relation = "Test relation";
     protected ArrayList<Attribute> attributes;
     protected ClassifierType classifierType;
+    public Verbosity verbosity = RUNTIME;
+    private long timeA = 0;
+    private long timeB = 0;
 
     public AbstractClassifier(IFileLoader fileLoader) {
         this.fileLoader = fileLoader;
@@ -49,7 +54,13 @@ public abstract class AbstractClassifier<T> implements IClassifier<T> {
         // 3. create a placeholder with instances
         Instances instancesPlaceholder = createInstancesPlaceholder();
         // 4. calculate features
+        if (verbosity == DEBUG)
+            timeA = System.currentTimeMillis();
         Instance features = calculateFeatures(data);
+        if (verbosity == DEBUG) {
+             timeB = System.currentTimeMillis();
+             System.out.println("Time to calc features (" + MODEL + "): " + (timeB - timeA) + " ms");
+        }
         // 5. add features to the placeholder
         instancesPlaceholder.add(features);
         // 6. classify
