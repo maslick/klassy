@@ -42,11 +42,12 @@ public class Houser extends AbstractClassifier<House> {
         // valid instance size is 5 or 6 (with class attribute)
         Instance instance = new DenseInstance(5);
 
-        instance.setValue(0, data.getHouseSize());
-        instance.setValue(1, data.getLotSize());
-        instance.setValue(2, data.getBedrooms());
-        instance.setValue(3, data.getGranite());
-        instance.setValue(4, data.getBathroom());
+        instance.setValue(attributes.get(0), data.getHouseSize());
+        instance.setValue(attributes.get(1), data.getLotSize());
+        instance.setValue(attributes.get(2), data.getBedrooms());
+        instance.setValue(attributes.get(3), data.getGranite());
+        instance.setValue(attributes.get(4), data.getBathroom());
+
         return instance;
     }
 }
