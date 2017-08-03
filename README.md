@@ -17,7 +17,7 @@ repositories {
 }
 ...
 dependencies {    
-    compile('com.maslick.ai:klassy:0.1.6')
+    compile('com.maslick.ai:klassy:0.1.7')
 }
 ```
 
