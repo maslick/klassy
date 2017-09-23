@@ -17,7 +17,7 @@ import static com.maslick.ai.klassy.classifier.Verbosity.RUNTIME;
 
 public abstract class AbstractClassifier<T> implements IClassifier<T> {
     private IFileLoader fileLoader;
-    protected String MODEL = "model.model";
+    public String MODEL = "model.model";
     public Classifier classifier;
     protected int classIndex = -1;
     protected String relation = "Test relation";
@@ -31,7 +31,7 @@ public abstract class AbstractClassifier<T> implements IClassifier<T> {
         this.fileLoader = fileLoader;
     }
 
-    protected void loadClassifierModel() {
+    public void loadClassifierModel() {
         try {
             IModelLoader modelLoader = new ModelLoader(fileLoader);
             classifier = modelLoader.getClassifierFromFile(MODEL);

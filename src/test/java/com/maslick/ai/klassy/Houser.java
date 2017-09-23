@@ -27,12 +27,12 @@ public class Houser extends AbstractClassifier<House> {
         // Weka doesn't take attribute names into account, but their order!
         // However, for clarity one should specify attribute names like below
 
-        atts.add(new Attribute("houseSize"));
-        atts.add(new Attribute("lotSize"));
-        atts.add(new Attribute("bedrooms"));
-        atts.add(new Attribute("granite"));
-        atts.add(new Attribute("bathroom"));
-        atts.add(new Attribute("sellingPrice"));    // class attribute (classIndex=5)
+        atts.add(new Attribute("houseSize",    0));
+        atts.add(new Attribute("lotSize",      1));
+        atts.add(new Attribute("bedrooms",     2));
+        atts.add(new Attribute("granite",      3));
+        atts.add(new Attribute("bathroom",     4));
+        atts.add(new Attribute("sellingPrice", 5));    // class attribute (classIndex=5)
 
         return atts;
     }
