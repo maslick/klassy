@@ -117,7 +117,7 @@ public class AndroidFileLoader implements IFileLoader {
 
     @Override
     public InputStream getFile(String filename) throws IOException {
-        return context.applicationContext.assets.open(filename);
+        context.getApplicationContext().getAssets().open(filename);
     }
 }
 ```
